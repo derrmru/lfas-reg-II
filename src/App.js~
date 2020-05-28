@@ -46,7 +46,7 @@ function App() {
 	  setAddressName(address[i].long_name)
 	} else if (address[i].types.indexOf('locality') >= 0){
 	  setAddressCity(address[i].long_name)
-	}
+	} 
       }
 
     }
@@ -223,7 +223,6 @@ function App() {
 	  }
 
 	</form>
-
       </div>
     </div>
   );

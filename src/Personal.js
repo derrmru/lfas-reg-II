@@ -107,7 +107,32 @@ let Personal = (props) => {
     Object.assign(theFields, thisForm)
 
     props.updateFields(theFields);
-    props.reRender("medical");
+
+    //Form Validation
+    /*let forms = document.forms[0];
+    let requiredFields = [
+      "firstName", 
+      "lastName", 
+      "dob", 
+      "addressName", 
+      "tel", 
+      "email", 
+      "insurer", 
+    ] 
+
+    let fieldCount = requiredFields.length;
+
+    requiredFields.map(x => {
+      if (forms[x].value === "" || forms[x].value === undefined) {
+        fieldCount += 1;
+        return forms[x].style = "border: 3px solid red;" 
+      } else {
+        fieldCount -= 1;
+        return forms[x].style = "border: 1pz solid black;"
+      }
+    })
+
+    fieldCount === 0 ? */props.reRender("medical") /*: console.log(fieldCount);*/
   }
 
   return (
@@ -118,25 +143,25 @@ let Personal = (props) => {
       <form className="reg-form">
         <label>
           First Name: <br />
-          <input type="text" value={firstName}  onChange={e => setFirstName(e.target.value)} required />
+          <input type="text" name="firstName" value={firstName}  onChange={e => setFirstName(e.target.value)} required />
           <br />
         </label>
 
         <label>
                 Last Name: <br />
-                <input type="text" value={lastName}  onChange={e => setLastName(e.target.value)} required />
+                <input type="text" name="lastName" value={lastName}  onChange={e => setLastName(e.target.value)} required />
           <br />
               </label>
 
         <label>
           Date of Birth: <br />
-          <input type="date" value={dob}  className="date-picker" onChange={e => setDOB(e.target.value)} required />
+          <input type="date" name="dob" value={dob}  className="date-picker" onChange={e => setDOB(e.target.value)} required />
           <br />
         </label>
 
         <label>
           Address: <br />
-          <input id="autocomplete" type="text" value={addressName} onChange={e => setAddressName(e.target.value)}  required />
+          <input id="autocomplete" type="text" name="addressName" value={addressName} onChange={e => setAddressName(e.target.value)}  required />
           <br />
         </label>
 
@@ -168,19 +193,19 @@ let Personal = (props) => {
 
         <label>
           Contact Number: <br />
-          <input type="text" value={tel} onChange={e => setTel(e.target.value)} required />
+          <input type="text" name="tel" value={tel} onChange={e => setTel(e.target.value)} required />
           <br />
         </label>
 
         <label>
           Email Address: <br />
-          <input type="email" value={email}  onChange={e => setEmail(e.target.email)} required />
+          <input type="email" name="email" value={email}  onChange={e => setEmail(e.target.value)} required />
           <br />
         </label>
 
         <label>
                 GP Address: <br />
-                <input id="GP" type="text" value={GPName} onChange={e => setGPName(e.target.value)} required />
+                <input id="GP" type="text" name="GPName" value={GPName} onChange={e => setGPName(e.target.value)} required />
                 <br />
               </label>
 

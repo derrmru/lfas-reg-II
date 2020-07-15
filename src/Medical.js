@@ -29,7 +29,38 @@ let Medical = (props) => {
         theFields.shoeSize = shoeSize;
         theFields.sports = sports;
         props.updateFields(theFields);
-        props.reRender(e);
+
+        //Form Validation
+        /*let forms = document.forms[0];
+
+        let requiredFields = [ 
+            "conditions", 
+            "medicines", 
+            "operations", 
+            "allergies", 
+            "smoker",
+            "alcohol", 
+            "occupation",
+            "weight",
+            "height", 
+            "shoeSize", 
+            "sports"
+        ]
+
+        let fieldCount = requiredFields.length;
+
+        requiredFields.map(x => {
+            if (forms[x].value === "" || forms[x].value === undefined) {
+                fieldCount += 1;
+                return forms[x].style = "border: 3px solid red;" 
+            } else {
+                fieldCount -= 1;
+                return forms[x].style = "border: 1px solid black;" 
+            }
+        })
+
+        fieldCount === 0 ? */ props.reRender(e) /*: console.log(fieldCount);*/
+
       }
 
     return (
@@ -40,25 +71,25 @@ let Medical = (props) => {
         <form className="reg-form">
             <label>
             Please list all medical conditions you are being treated for: <br />
-            <input type="text" value={conditions ? conditions : ""}  onChange={e => setConditions(e.target.value)} required />
+            <input type="text" name="conditions" value={conditions ? conditions : ""}  onChange={e => setConditions(e.target.value)} required />
             <br />
             </label>
 
             <label>
             Please list all medicines you are currently taking: <br />
-            <input type="text" value={medicines ? medicines : ""}  onChange={e => setMedicines(e.target.value)} required />
+            <input type="text" name="medicines" value={medicines ? medicines : ""}  onChange={e => setMedicines(e.target.value)} required />
             <br />
             </label>
 
             <label>
             Please list any previous operations you have had: <br />
-            <input type="text" value={operations ? operations : ""}  onChange={e => setOperations(e.target.value)} required />
+            <input type="text" name="operations" value={operations ? operations : ""}  onChange={e => setOperations(e.target.value)} required />
             <br />
             </label>
 
             <label>
             Please list any allergies: <br />
-            <input type="text" value={allergies ? allergies : ""}  onChange={e => setAllergies(e.target.value)} required />
+            <input type="text" name="allergies" value={allergies ? allergies : ""}  onChange={e => setAllergies(e.target.value)} required />
             <br />
             </label>
 
@@ -73,7 +104,7 @@ let Medical = (props) => {
             {smoker === "smoker" ?
                 <label>
                 How many cigarettes per day: <br />
-                <input type="text" value={smokesPerDay ? smokesPerDay : ""}  onChange={e => setSmokesPerDay(e.target.value)} required />
+                <input type="text" name="smokesPerDay" value={smokesPerDay ? smokesPerDay : ""}  onChange={e => setSmokesPerDay(e.target.value)} required />
                 <br />
                 </label> 
 
@@ -84,37 +115,37 @@ let Medical = (props) => {
 
             <label>
                 How many units of alcohol do you consume per week?: <br />
-                <input type="text" value={alcohol ? alcohol : ""}  onChange={e => setAlcohol(e.target.value)} required />
+                <input type="text" name="alcohol" value={alcohol ? alcohol : ""}  onChange={e => setAlcohol(e.target.value)} required />
                 <br />
             </label>
 
             <label>
                 Occupation: <br />
-                <input type="text" value={occupation ? occupation : ""}  onChange={e => setOccupation(e.target.value)} required />
+                <input type="text" name="occupation" value={occupation ? occupation : ""}  onChange={e => setOccupation(e.target.value)} required />
                 <br />
             </label>
 
             <label>
                 Weight: <br />
-                <input type="text" value={weight ? weight : ""}  onChange={e => setWeight(e.target.value)} required />
+                <input type="text" name="weight" value={weight ? weight : ""}  onChange={e => setWeight(e.target.value)} required />
                 <br />
             </label>
 
             <label>
                 Height: <br />
-                <input type="text" value={height ? height: ""}  onChange={e => setHeight(e.target.value)} required />
+                <input type="text" name="height" value={height ? height: ""}  onChange={e => setHeight(e.target.value)} required />
                 <br />
             </label>
 
             <label>
                 Shoe Size: <br />
-                <input type="text" value={shoeSize ? shoeSize : ""}  onChange={e => setShoeSize(e.target.value)} required />
+                <input type="text" name="shoeSize" value={shoeSize ? shoeSize : ""}  onChange={e => setShoeSize(e.target.value)} required />
                 <br />
             </label>
 
             <label>
                 Please list all sports and recreational activities: <br />
-                <input type="text" value={sports ? sports : ""}  onChange={e => setSports(e.target.value)} required />
+                <input type="text" name="sports" value={sports ? sports : ""}  onChange={e => setSports(e.target.value)} required />
                 <br />
             </label>
         </form>

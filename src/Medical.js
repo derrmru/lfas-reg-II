@@ -96,8 +96,14 @@ let Medical = (props) => {
             <label>
             Smoker: <br />
             <div>
-                <input type="radio" name='smoker' checked={smoker === "smoker"} value="smoker" onChange={e => setSmoker(e.target.value)} />Smoker
-                <input type="radio" name='smoker' checked={smoker === "non-smoker"} value="non-smoker" onChange={e => setSmoker(e.target.value)} />Non-Smoker
+                <label>
+                Smoker:
+                <input type="radio" name='smoker' checked={smoker === "smoker"} value="smoker" onChange={e => setSmoker(e.target.value)} />
+                </label>
+                <label>
+                Non-Smoker:
+                <input type="radio" name='smoker' checked={smoker === "non-smoker"} value="non-smoker" onChange={e => setSmoker(e.target.value)} />
+                </label>
             </div>
             </label>
 

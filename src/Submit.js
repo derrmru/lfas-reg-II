@@ -15,12 +15,7 @@ let Submit = (props) => {
         props.updateFields(ff);
 
         //Form Validation
-        let requiredFields = [
-            "privacy",
-            "marketing"
-            ] 
-
-        let fieldCount = requiredFields.length;
+        let fieldCount = 0;
 
         if (privacy === "") {
             fieldCount += 1;
@@ -32,7 +27,7 @@ let Submit = (props) => {
             document.getElementById("marketing").style = "border: 3px solid red";
         } 
         
-        if (marketing !== 0 && privacy !== 0){
+        if (marketing === 0 && privacy === 0){
             fieldCount = 0;
         }
 

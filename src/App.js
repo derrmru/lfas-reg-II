@@ -3,7 +3,6 @@ import Personal from './Personal';
 import Medical from './Medical';
 import Submit from './Submit';
 import Complete from './Complete';
-import './App.css';
 
 function App() {
   const [stage, setStage] = useState("personal");

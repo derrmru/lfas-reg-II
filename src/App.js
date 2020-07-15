@@ -7,7 +7,7 @@ import './App.css';
 
 function App() {
   const [stage, setStage] = useState("personal");
-  const [fields, setFields] = useState({
+  const [fields, setFields] = useState({//initial Fields variable state:
     firstName: "",
     lastName: "",
     dob: "",
@@ -28,10 +28,12 @@ function App() {
     membership: ""
   })
 
+  //update the global variable, Fields, accessible to components via props
   let updateFields = (d) => {
     setFields(d);
   }
 
+  //Rerender function for each stage of the form, accessible to components 'back' and 'next' buttons via props
   let reRender = (e) => {
     setStage(e)
   }
@@ -40,7 +42,7 @@ function App() {
     stage === "personal" ? 
       <Personal reRender={reRender} fields={fields} updateFields={updateFields} /> : stage === "medical" ? 
       <Medical reRender={reRender} fields={fields} updateFields={updateFields} /> : stage === "submit" ?
-      <Submit reRender={reRender} fields={fields} /> : <Complete />
+      <Submit reRender={reRender} fields={fields} updateFields={updateFields} /> : <Complete />
   )
 }
 

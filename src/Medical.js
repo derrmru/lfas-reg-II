@@ -31,7 +31,7 @@ let Medical = (props) => {
         props.updateFields(theFields);
 
         //Form Validation
-        /*let forms = document.forms[0];
+        let forms = document.forms[0];
 
         let requiredFields = [ 
             "conditions", 
@@ -59,7 +59,7 @@ let Medical = (props) => {
             }
         })
 
-        fieldCount === 0 ? */ props.reRender(e) /*: console.log(fieldCount);*/
+        fieldCount === 0 ?  props.reRender(e) : console.log(fieldCount);
 
       }
 

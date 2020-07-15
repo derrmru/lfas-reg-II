@@ -109,7 +109,7 @@ let Personal = (props) => {
     props.updateFields(theFields);
 
     //Form Validation
-    /*let forms = document.forms[0];
+    let forms = document.forms[0];
     let requiredFields = [
       "firstName", 
       "lastName", 
@@ -132,7 +132,7 @@ let Personal = (props) => {
       }
     })
 
-    fieldCount === 0 ? */props.reRender("medical") /*: console.log(fieldCount);*/
+    fieldCount === 0 ? props.reRender("medical") : console.log(fieldCount);
   }
 
   return (

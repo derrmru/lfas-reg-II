@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import $ from "jquery";
 
 let Submit = (props) => {
     let theFields = props.fields;
@@ -22,11 +23,6 @@ let Submit = (props) => {
             document.getElementById("privacy").style = "border: 3px solid red";
         } 
         
-        if (marketing === "") {
-            fieldCount += 1;
-            document.getElementById("marketing").style = "border: 3px solid red";
-        } 
-        
         if (marketing === 0 && privacy === 0){
             fieldCount = 0;
         }
@@ -36,7 +32,16 @@ let Submit = (props) => {
     }
 
     let postData = () => {
-        console.log(theFields)
+        $.post(   "https://script.google.com/a/podogo.com/macros/s/AKfycbwcWlcdhynMYE1d3ygBlS1NNeZXwe4H5bqzlbZu/exec",
+            ff,
+            function(res, status)   {
+                console.log(res);
+                console.log(status);
+                    if (status === 'success'){
+                        props.reRender("completed")
+                    }
+                }
+            );
     }
 
     return (
@@ -58,6 +63,7 @@ let Submit = (props) => {
             By checking this box you agree that you have read our privacy policy and that the personal information you provide will be processed in accordance with this. <br />
             <div id="privacy">
                 <input className="pm-checkbox" type="checkbox" checked={privacy} name="privacy" onChange={e => setPrivacy(privacy === "I AGREE" ? "" : "I AGREE")} />I AGREE
+                <div className="required-label">*required</div>
             </div>
             </label>
 

@@ -140,29 +140,30 @@ let Personal = (props) => {
       <div className="reg-border">
       <h1>Registration Form</h1>
       <h2>London Foot & Ankle Surgery</h2>
+      <div>If any fields are not relevant, please use 'N/A'</div>
       <hr />
       <form className="reg-form">
         <label>
-          First Name: <br />
-          <input type="text" name="firstName" value={firstName}  onChange={e => setFirstName(e.target.value)} required />
+          First Name: <div className="required-label">*required</div> <br />
+          <input type="text" name="firstName" value={firstName}  onChange={e => setFirstName(e.target.value)} placeholder="e.g. John" />
           <br />
         </label>
 
         <label>
-                Last Name: <br />
-                <input type="text" name="lastName" value={lastName}  onChange={e => setLastName(e.target.value)} required />
+                Last Name: <div className="required-label">*required</div> <br />
+                <input type="text" name="lastName" value={lastName}  onChange={e => setLastName(e.target.value)} placeholder="e.g. Smith" />
           <br />
               </label>
 
         <label>
-          Date of Birth: <br />
-          <input type="date" name="dob" value={dob}  className="date-picker" onChange={e => setDOB(e.target.value)} required />
+          Date of Birth: <div className="required-label">*required</div> <br />
+          <input type="date" name="dob" value={dob}  className="date-picker" onChange={e => setDOB(e.target.value)} />
           <br />
         </label>
 
         <label>
-          Address: <br />
-          <input id="autocomplete" type="text" name="addressName" value={addressName} onChange={e => setAddressName(e.target.value)}  required />
+          Address: <div className="required-label">*required</div> <br />
+          <input id="autocomplete" type="text" name="addressName" value={addressName} onChange={e => setAddressName(e.target.value)} />
           <br />
         </label>
 
@@ -171,7 +172,7 @@ let Personal = (props) => {
         <div className="address-details">
           <label>
             Street: <br />
-            <input className="address-part" type="text" value={addressStreet} onChange={e => setAddressStreet(e.target.value)}  required />
+            <input className="address-part" type="text" value={addressStreet} onChange={e => setAddressStreet(e.target.value)} />
             <br />
           </label>
           <label>
@@ -181,12 +182,12 @@ let Personal = (props) => {
           </label>
           <label>
             Country: <br />
-            <input className="address-part" type="text" onChange={e => setAddressCountry(e.target.value)}  value={addressCountry}  required />
+            <input className="address-part" type="text" onChange={e => setAddressCountry(e.target.value)}  value={addressCountry} />
             <br />
           </label>
           <label>
             Post/Zip Code: <br />
-            <input className="address-part" type="text" onChange={e => setAddressPost(e.target.value)}  value={addressPost}  required />
+            <input className="address-part" type="text" onChange={e => setAddressPost(e.target.value)}  value={addressPost} />
             <br />
           </label>
         </div>
@@ -195,20 +196,20 @@ let Personal = (props) => {
         <></>}
 
         <label>
-          Contact Number: <br />
-          <input type="text" name="tel" value={tel} onChange={e => setTel(e.target.value)} required />
+          Contact Number: <div className="required-label">*required</div> <br />
+          <input type="text" name="tel" value={tel} onChange={e => setTel(e.target.value)} placeholder="e.g. +44 7512 345 678" />
           <br />
         </label>
 
         <label>
-          Email Address: <br />
-          <input type="email" name="email" value={email}  onChange={e => setEmail(e.target.value)} required />
+          Email Address: <div className="required-label">*required</div> <br />
+          <input type="email" name="email" value={email}  onChange={e => setEmail(e.target.value)} placeholder="e.g. example@example.com" />
           <br />
         </label>
 
         <label>
                 GP Address: <br />
-                <input id="GP" type="text" name="GPName" value={GPName} onChange={e => setGPName(e.target.value)} required />
+                <input id="GP" type="text" name="GPName" value={GPName} onChange={e => setGPName(e.target.value)} />
                 <br />
               </label>
 
@@ -217,7 +218,7 @@ let Personal = (props) => {
               <div className="address-details">
                 <label>
                   Street: <br />
-                  <input className="address-part" type="text" onChange={e => setGPStreet(e.target.value)} value={GPStreet}  required />
+                  <input className="address-part" type="text" onChange={e => setGPStreet(e.target.value)} value={GPStreet} />
                   <br />
                 </label>
                 <label>
@@ -227,12 +228,12 @@ let Personal = (props) => {
                 </label>
                 <label>
                   Country: <br />
-                  <input className="address-part" type="text" onChange={e => setGPCountry(e.target.value)} value={GPCountry} required />
+                  <input className="address-part" type="text" onChange={e => setGPCountry(e.target.value)} value={GPCountry} />
                   <br />
                 </label>
                 <label>
                   Post/Zip Code: <br />
-                  <input className="address-part" type="text" onChange={e => setGPPost(e.target.value)} value={GPPost} required />
+                  <input className="address-part" type="text" onChange={e => setGPPost(e.target.value)} value={GPPost} />
                   <br />
                 </label>
               </div>
@@ -241,10 +242,10 @@ let Personal = (props) => {
               <></>}
 
         <label>
-        Method of Payment: <br />
+        Method of Payment: <div className="required-label">*required</div> <br />
         <select name="insurer" value={insurer} onChange={e => setInsurer(e.target.value)} required>
                     <option value="" disabled defaultValue>-Select a method of payment-</option>
-                    <option value="self-funding">Self-funding</option>
+                    <option value="Self-funding">Self-funding</option>
                     <option value="aetna">Aetna</option>
                     <option value="cigna">Allianz</option>
                     <option value="bupa">Bupa</option>
@@ -261,7 +262,7 @@ let Personal = (props) => {
         <br />
         </label>
 
-        {insurer !== "" && insurer !== 'self-funding' ?
+        {insurer !== "" && insurer !== 'Self-funding' ?
           <>
           <hr />
           <label>

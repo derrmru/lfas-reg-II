@@ -68,33 +68,35 @@ let Medical = (props) => {
         <div className="reg-border">
         <h1>Registration Form</h1>
         <h2>London Foot & Ankle Surgery</h2>
+        <div style={{marginBottom: "30px"}}>If any fields are not relevant, please use 'N/A'</div>
+        <hr />
         <form className="reg-form">
             <label>
-            Please list all medical conditions you are being treated for: <br />
-            <input type="text" name="conditions" value={conditions ? conditions : ""}  onChange={e => setConditions(e.target.value)} required />
+            Please list all medical conditions you are being treated for: <div className="required-label">*required</div> <br />
+            <input type="text" name="conditions" value={conditions ? conditions : ""}  onChange={e => setConditions(e.target.value)} placeholder="e.g. gout" />
             <br />
             </label>
 
             <label>
-            Please list all medicines you are currently taking: <br />
-            <input type="text" name="medicines" value={medicines ? medicines : ""}  onChange={e => setMedicines(e.target.value)} required />
+            Please list all medicines you are currently taking: <div className="required-label">*required</div> <br />
+            <input type="text" name="medicines" value={medicines ? medicines : ""}  onChange={e => setMedicines(e.target.value)} placeholder="e.g. painkillers" />
             <br />
             </label>
 
             <label>
-            Please list any previous operations you have had: <br />
-            <input type="text" name="operations" value={operations ? operations : ""}  onChange={e => setOperations(e.target.value)} required />
+            Please list any previous operations you have had: <div className="required-label">*required</div> <br />
+            <input type="text" name="operations" value={operations ? operations : ""}  onChange={e => setOperations(e.target.value)} placeholder="e.g. ACL Repair" />
             <br />
             </label>
 
             <label>
-            Please list any allergies: <br />
-            <input type="text" name="allergies" value={allergies ? allergies : ""}  onChange={e => setAllergies(e.target.value)} required />
+            Please list any allergies: <div className="required-label">*required</div> <br />
+            <input type="text" name="allergies" value={allergies ? allergies : ""}  onChange={e => setAllergies(e.target.value)} placeholder="e.g. penicillin" />
             <br />
             </label>
 
             <label>
-            Do you smoke? <br />
+            Do you smoke? <div className="required-label">*required</div> <br />
             <div className="radio-container">
                 <label>
                 Yes:
@@ -110,7 +112,7 @@ let Medical = (props) => {
             {smoker === "smoker" ?
                 <label>
                 How many cigarettes per day: <br />
-                <input type="text" name="smokesPerDay" value={smokesPerDay ? smokesPerDay : ""}  onChange={e => setSmokesPerDay(e.target.value)} required />
+                <input type="text" name="smokesPerDay" value={smokesPerDay ? smokesPerDay : ""}  onChange={e => setSmokesPerDay(e.target.value)} placeholder="e.g. 3" />
                 <br />
                 </label> 
 
@@ -120,38 +122,38 @@ let Medical = (props) => {
             }
 
             <label>
-                How many units of alcohol do you consume per week?: <br />
-                <input type="text" name="alcohol" value={alcohol ? alcohol : ""}  onChange={e => setAlcohol(e.target.value)} required />
+                How many units of alcohol do you consume per week?: <div className="required-label">*required</div> <br />
+                <input type="text" name="alcohol" value={alcohol ? alcohol : ""}  onChange={e => setAlcohol(e.target.value)} placeholder="e.g. 4" />
                 <br />
             </label>
 
             <label>
-                Occupation: <br />
-                <input type="text" name="occupation" value={occupation ? occupation : ""}  onChange={e => setOccupation(e.target.value)} required />
+                Occupation: <div className="required-label">*required</div> <br />
+                <input type="text" name="occupation" value={occupation ? occupation : ""}  onChange={e => setOccupation(e.target.value)} />
                 <br />
             </label>
 
             <label>
-                Weight: <br />
-                <input type="text" name="weight" value={weight ? weight : ""}  onChange={e => setWeight(e.target.value)} required />
+                Weight: <div className="required-label">*required</div> <br />
+                <input type="text" name="weight" value={weight ? weight : ""}  onChange={e => setWeight(e.target.value)} placeholder="e.g. 80kg" />
                 <br />
             </label>
 
             <label>
-                Height: <br />
-                <input type="text" name="height" value={height ? height: ""}  onChange={e => setHeight(e.target.value)} required />
+                Height: <div className="required-label">*required</div> <br />
+                <input type="text" name="height" value={height ? height: ""}  onChange={e => setHeight(e.target.value)} placeholder="e.g. 5ft 10in" />
                 <br />
             </label>
 
             <label>
-                Shoe Size: <br />
-                <input type="text" name="shoeSize" value={shoeSize ? shoeSize : ""}  onChange={e => setShoeSize(e.target.value)} required />
+                Shoe Size: <div className="required-label">*required</div> <br />
+                <input type="text" name="shoeSize" value={shoeSize ? shoeSize : ""}  onChange={e => setShoeSize(e.target.value)} placeholder="e.g. 9 UK" />
                 <br />
             </label>
 
             <label>
-                Please list all sports and recreational activities: <br />
-                <input type="text" name="sports" value={sports ? sports : ""}  onChange={e => setSports(e.target.value)} required />
+                Please list all sports and recreational activities: <div className="required-label">*required</div> <br />
+                <input type="text" name="sports" value={sports ? sports : ""}  onChange={e => setSports(e.target.value)} placeholder="e.g. badminton" />
                 <br />
             </label>
         </form>

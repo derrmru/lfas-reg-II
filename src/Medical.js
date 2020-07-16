@@ -94,15 +94,15 @@ let Medical = (props) => {
             </label>
 
             <label>
-            Smoker: <br />
-            <div>
+            Do you smoke? <br />
+            <div className="radio-container">
                 <label>
-                Smoker:
-                <input type="radio" name='smoker' checked={smoker === "smoker"} value="smoker" onChange={e => setSmoker(e.target.value)} />
+                Yes:
+                <input className="radios" type="radio" name='smoker' checked={smoker === "smoker"} value="smoker" onChange={e => setSmoker(e.target.value)} />
                 </label>
                 <label>
-                Non-Smoker:
-                <input type="radio" name='smoker' checked={smoker === "non-smoker"} value="non-smoker" onChange={e => setSmoker(e.target.value)} />
+                No:
+                <input className="radios" type="radio" name='smoker' checked={smoker === "non-smoker"} value="non-smoker" onChange={e => setSmoker(e.target.value)} />
                 </label>
             </div>
             </label>
@@ -156,8 +156,8 @@ let Medical = (props) => {
             </label>
         </form>
         <div className="nav-buttons">
-            <button onClick={() => onClick("personal")}>back</button>
-            <button onClick={() => onClick("submit")}>next</button>
+            <button className="back-button" onClick={() => onClick("personal")}>back</button>
+            <button className="next-button" onClick={() => onClick("submit")}>next</button>
         </div>
         </div>
         </>

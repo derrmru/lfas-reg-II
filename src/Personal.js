@@ -140,6 +140,7 @@ let Personal = (props) => {
       <div className="reg-border">
       <h1>Registration Form</h1>
       <h2>London Foot & Ankle Surgery</h2>
+      <hr />
       <form className="reg-form">
         <label>
           First Name: <br />
@@ -167,26 +168,28 @@ let Personal = (props) => {
 
         {addressCountry !== "" ?
         <>
-        <label>
-          Street: <br />
-          <input type="text" value={addressStreet} onChange={e => setAddressStreet(e.target.value)}  required />
-          <br />
-        </label>
-        <label>
-          City: <br />
-          <input type="text" onChange={e => setAddressCity(e.target.value)}  value={addressCity} />
-          <br />
-        </label>
-        <label>
-          Country: <br />
-          <input type="text" onChange={e => setAddressCountry(e.target.value)}  value={addressCountry}  required />
-          <br />
-        </label>
-        <label>
-          Post/Zip Code: <br />
-          <input type="text" onChange={e => setAddressPost(e.target.value)}  value={addressPost}  required />
-          <br />
-        </label>
+        <div className="address-details">
+          <label>
+            Street: <br />
+            <input className="address-part" type="text" value={addressStreet} onChange={e => setAddressStreet(e.target.value)}  required />
+            <br />
+          </label>
+          <label>
+            City: <br />
+            <input className="address-part" type="text" onChange={e => setAddressCity(e.target.value)}  value={addressCity} />
+            <br />
+          </label>
+          <label>
+            Country: <br />
+            <input className="address-part" type="text" onChange={e => setAddressCountry(e.target.value)}  value={addressCountry}  required />
+            <br />
+          </label>
+          <label>
+            Post/Zip Code: <br />
+            <input className="address-part" type="text" onChange={e => setAddressPost(e.target.value)}  value={addressPost}  required />
+            <br />
+          </label>
+        </div>
         </>
         :
         <></>}
@@ -211,26 +214,28 @@ let Personal = (props) => {
 
               {GPName !== "" && GPStreet !== "" && GPPost !== "" ?
               <>
-              <label>
-                Street: <br />
-                <input type="text" onChange={e => setGPStreet(e.target.value)} value={GPStreet}  required />
-                <br />
-              </label>
-              <label>
-                City: <br />
-                <input type="text" onChange={e => setGPCity(e.target.value)} value={GPCity} />
-                <br />
-              </label>
-              <label>
-                Country: <br />
-                <input type="text" onChange={e => setGPCountry(e.target.value)} value={GPCountry} required />
-                <br />
-              </label>
-              <label>
-                Post/Zip Code: <br />
-                <input type="text" onChange={e => setGPPost(e.target.value)} value={GPPost} required />
-                <br />
-              </label>
+              <div className="address-details">
+                <label>
+                  Street: <br />
+                  <input className="address-part" type="text" onChange={e => setGPStreet(e.target.value)} value={GPStreet}  required />
+                  <br />
+                </label>
+                <label>
+                  City: <br />
+                  <input className="address-part" type="text" onChange={e => setGPCity(e.target.value)} value={GPCity} />
+                  <br />
+                </label>
+                <label>
+                  Country: <br />
+                  <input className="address-part" type="text" onChange={e => setGPCountry(e.target.value)} value={GPCountry} required />
+                  <br />
+                </label>
+                <label>
+                  Post/Zip Code: <br />
+                  <input className="address-part" type="text" onChange={e => setGPPost(e.target.value)} value={GPPost} required />
+                  <br />
+                </label>
+              </div>
               </>
               :
               <></>}

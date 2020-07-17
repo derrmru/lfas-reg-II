@@ -208,7 +208,7 @@ let Personal = (props) => {
         </label>
 
         <label>
-                GP Address: <br />
+                GP Address: <div style={{fontSize: "11px", float: "right", marginRight: "20px"}}>Enter 'N/A' if you do not have a GP</div> <br />
                 <input id="GP" type="text" name="GPName" value={GPName} onChange={e => setGPName(e.target.value)} />
                 <br />
               </label>

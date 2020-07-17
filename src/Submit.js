@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import Loading from './Loading';
 import $ from "jquery";
 
 let Submit = (props) => {
     let theFields = props.fields;
     const [privacy, setPrivacy] = useState(props.fields.privacy ? props.fields.privacy : "");
     const [marketing, setMarketing] = useState(props.fields.marketing ? props.fields.marketing : "");
+    const [loading, setLoading] = useState(false);
     let theseStates = {
         privacy: privacy,
         marketing: marketing
@@ -14,6 +16,7 @@ let Submit = (props) => {
 
     let onClick = (e) => {
         props.updateFields(ff);
+        setLoading(true);
 
         //Form Validation
         let fieldCount = 0;
@@ -32,7 +35,7 @@ let Submit = (props) => {
     }
 
     let postData = () => {
-        $.post(   "https://script.google.com/a/podogo.com/macros/s/AKfycbwcWlcdhynMYE1d3ygBlS1NNeZXwe4H5bqzlbZu/exec",
+        $.post( "https://script.google.com/macros/s/AKfycbxeyYj6oLTTVU4NjuPXwz_G_KWqQoQM1K8HN_t6twdkepnJg2Q/exec",
             ff,
             function(res, status)   {
                 console.log(res);
@@ -80,6 +83,10 @@ let Submit = (props) => {
             <button className="next-button" onClick={() => onClick("fieldSubmit")}>Submit</button>
         </div>
         </div>
+
+        {
+            loading && <Loading />
+        }
         </>
     )
 }

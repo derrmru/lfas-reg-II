@@ -16,7 +16,8 @@ let Submit = (props) => {
 
     let onClick = (e) => {
         props.updateFields(ff);
-        setLoading(true);
+        
+        e === "fieldSubmit" && setLoading(true);
 
         //Form Validation
         let fieldCount = 0;

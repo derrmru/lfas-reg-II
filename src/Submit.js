@@ -29,8 +29,9 @@ let Submit = (props) => {
             fieldCount = 0;
         }
 
-        fieldCount === 0 && e === "medical" ? props.reRender(e) : e === "fieldSubmit" && fieldCount === 0 ? 
-            postData() : console.log(fieldCount);
+        e === "medical" ? props.reRender(e) : 
+            e === "fieldSubmit" && fieldCount === 0 ? postData() : 
+                console.log(fieldCount);
     }
 
     let postData = () => {

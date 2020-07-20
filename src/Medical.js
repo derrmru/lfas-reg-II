@@ -59,7 +59,9 @@ let Medical = (props) => {
             }
         })
 
-        fieldCount === 0 ?  props.reRender(e) : console.log(fieldCount);
+        e === "personal" ? props.reRender(e) : 
+            fieldCount === 0 ? props.reRender(e) : 
+                console.log(fieldCount);
 
       }
 

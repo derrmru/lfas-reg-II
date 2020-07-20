@@ -16,8 +16,6 @@ let Submit = (props) => {
 
     let onClick = (e) => {
         props.updateFields(ff);
-        
-        e === "fieldSubmit" && setLoading(true);
 
         //Form Validation
         let fieldCount = 0;
@@ -36,6 +34,7 @@ let Submit = (props) => {
     }
 
     let postData = () => {
+        setLoading(true);
         $.post( "https://script.google.com/macros/s/AKfycbxeyYj6oLTTVU4NjuPXwz_G_KWqQoQM1K8HN_t6twdkepnJg2Q/exec",
             ff,
             function(res, status)   {

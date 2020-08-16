@@ -30,7 +30,7 @@ let Medical = (props) => {
         theFields.sports = sports;
         props.updateFields(theFields);
 
-        //Form Validation
+        //Form Validation - replace in next iteration with type specific validity checks
         let forms = document.forms[0];
 
         let requiredFields = [ 

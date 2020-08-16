@@ -33,19 +33,19 @@ let Personal = (props) => {
       autocomplete.setFields(['address_component']);
 
       for (let i = 0; i < address.length; i++){
-	if (address[i].types[0] === 'country'){
-	  setAddressCountry(address[i].long_name)
-	} else if (address[i].types[0] === 'route'){
-	  setAddressStreet(address[i].long_name)
-	} else if (address[i].types[0] === 'administrative_area_level_2'){
-	  setAddressCity(address[i].long_name)
-	} else if (address[i].types.indexOf('postal_code') >= 0){
-	  setAddressPost(address[i].long_name)
-	} else if (address[i].types.indexOf('street_number') >= 0){
-	  setAddressName(address[i].long_name)
-	} else if (address[i].types.indexOf('locality') >= 0){
-	  setAddressCity(address[i].long_name)
-	}
+        if (address[i].types[0] === 'country'){
+          setAddressCountry(address[i].long_name)
+        } else if (address[i].types[0] === 'route'){
+          setAddressStreet(address[i].long_name)
+        } else if (address[i].types[0] === 'administrative_area_level_2'){
+          setAddressCity(address[i].long_name)
+        } else if (address[i].types.indexOf('postal_code') >= 0){
+          setAddressPost(address[i].long_name)
+        } else if (address[i].types.indexOf('street_number') >= 0){
+          setAddressName(address[i].long_name)
+        } else if (address[i].types.indexOf('locality') >= 0){
+          setAddressCity(address[i].long_name)
+        }
       }
 
     }
@@ -108,7 +108,7 @@ let Personal = (props) => {
 
     props.updateFields(theFields);
 
-    //Form Validation
+    //Form Validation - replace in next iteration with type-specific validity checks
     let forms = document.forms[0];
     let requiredFields = [
       "firstName", 

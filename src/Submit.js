@@ -59,7 +59,7 @@ let Submit = (props) => {
             Your Personal Data (Name, Date or Birth, Preferred Correspondence, Contact details and Medical Information) will be used to identify you when correspondence is shared with you and your GP/referrer (e.g. Consultant letter summarizing the Consultation), or when your Consultant refers you to another Consultant or Allied Health Professional as jointly agreed during the consultation process. The same data will also be used when mutually agreed tests or investigations are requested to further facilitate your diagnosis.
             <br />
             <br />
-            For more information on how we process your data visit our <a href="http://www.londonfootandanklesurgery.co.uk/privacy-policy/" target="_blank" rel="noopener noreferrer">Privacy Statement</a>, or contact our team who would be happy to provide further details. The person responsible for Data Protection is: Mr. Peter Sweeney, Information Governance Lead, who you can reach via – F.A.O. Mr. Peter Sweeney, 79 Wimpole Street, London, W1G 9RY (or by email – admin@londonfootandanklesurgery.co.uk)
+            For more information on how we process your data visit our <a href="http://www.londonfootandanklesurgery.co.uk/privacy-policy/" target="_blank" rel="noopener noreferrer">Privacy Statement</a>, or contact our team who would be happy to provide further details. The person responsible for Data Protection is: Mr. Peter Sweeney, Information Governance Lead, who you can reach via – F.A.O. Mr. Peter Sweeney, 17 Harley Street, London, W1G 9QH (or by email – admin@londonfootandanklesurgery.co.uk)
         </div>
 
         <form className="reg-form pm-margin">

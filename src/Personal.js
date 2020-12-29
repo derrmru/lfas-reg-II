@@ -82,8 +82,8 @@ let Personal = (props) => {
 
   let onClick = () => {
     let thisForm = {
-      firstName: firstName,
-      lastName: lastName,
+      firstName: firstName.trim(),
+      lastName: lastName.trim(),
       dob: dob,
       addressName: addressName,
       addressStreet: addressStreet,
@@ -108,7 +108,7 @@ let Personal = (props) => {
 
     props.updateFields(theFields);
 
-    //Form Validation - replace in next iteration with type-specific validity checks
+    //Form Validation - replace in next version with type-specific validity checks
     let forms = document.forms[0];
     let requiredFields = [
       "firstName", 
@@ -258,6 +258,7 @@ let Personal = (props) => {
                     <option value="healix">Healix</option>
                     <option value="simply-health">Simply Health</option>
                     <option value="vitality">Vitality</option>
+                    <option value="wpa">WPA</option>
               </select>
         <br />
         </label>

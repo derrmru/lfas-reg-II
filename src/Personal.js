@@ -247,7 +247,7 @@ let Personal = (props) => {
                     <option value="" disabled defaultValue>-Select a method of payment-</option>
                     <option value="Self-funding">Self-funding</option>
                     <option value="aetna">Aetna</option>
-                    <option value="cigna">Allianz</option>
+                    <option value="allianz">Allianz</option>
                     <option value="bupa">Bupa</option>
                     <option value="aviva">Aviva</option>
                     <option value="axa-ppp">AXA PPP</option>

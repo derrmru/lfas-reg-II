@@ -1,21 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Loading from './Loading';
+import SignatureCanvas from 'react-signature-canvas';
 import $ from "jquery";
 
 let Submit = (props) => {
     let theFields = props.fields;
-    const [privacy, setPrivacy] = useState(props.fields.privacy ? props.fields.privacy : "");
-    const [marketing, setMarketing] = useState(props.fields.marketing ? props.fields.marketing : "");
+    const [privacy, setPrivacy] = useState(props.fields.privacy || "");
+    const [marketing, setMarketing] = useState(props.fields.marketing || "");
+    const sigPad = useRef({});
+    //console.log(sigPad)
     const [loading, setLoading] = useState(false);
     let theseStates = {
         privacy: privacy,
         marketing: marketing
     };
     let ff = Object.assign(theFields, theseStates);
-    
 
     let onClick = (e) => {
         props.updateFields(ff);
+        const empty = sigPad.current._sigPad._isEmpty;
 
         //Form Validation
         let fieldCount = 0;
@@ -23,9 +26,14 @@ let Submit = (props) => {
         if (privacy === "") {
             fieldCount += 1;
             document.getElementById("privacy").style = "border: 3px solid red";
-        } 
+        }
+
+        if (empty) {
+            fieldCount += 1;
+            document.getElementById("signature").style.border = "3px solid red";
+        }
         
-        if (marketing === 0 && privacy === 0){
+        if (privacy !== "" && !empty){
             fieldCount = 0;
         }
 
@@ -35,8 +43,14 @@ let Submit = (props) => {
     }
 
     let postData = () => {
+        //toggle loading icon while submitting data to web app
         setLoading(true);
-        $.post( "https://script.google.com/macros/s/AKfycbxeyYj6oLTTVU4NjuPXwz_G_KWqQoQM1K8HN_t6twdkepnJg2Q/exec",
+
+        //attach signature image to payload
+        ff.signature = sigPad.current.getSignaturePad().toDataURL('image/png')
+
+        //post the data and on completion reRender to completed
+        $.post( process.env.REACT_APP_POST,
             ff,
             function(res, status)   {
                 console.log(res);
@@ -56,15 +70,26 @@ let Submit = (props) => {
         <hr />
         <div className="privacy-statement">
         <h3 className="privacy-title">Privacy Statement</h3>
-            Your Personal Data (Name, Date or Birth, Preferred Correspondence, Contact details and Medical Information) will be used to identify you when correspondence is shared with you and your GP/referrer (e.g. Consultant letter summarizing the Consultation), or when your Consultant refers you to another Consultant or Allied Health Professional as jointly agreed during the consultation process. The same data will also be used when mutually agreed tests or investigations are requested to further facilitate your diagnosis.
+            Your Personal Data (Name, Date or Birth, Preferred Correspondence, Contact details and Medical Information and other identifying information) will be used to provide our healthcare service to you and processed in accordance with the following privacy policies:
             <br />
             <br />
-            For more information on how we process your data visit our <a href="http://www.londonfootandanklesurgery.co.uk/privacy-policy/" target="_blank" rel="noopener noreferrer">Privacy Statement</a>, or contact our team who would be happy to provide further details. The person responsible for Data Protection is: Mr. Peter Sweeney, Information Governance Lead, who you can reach via – F.A.O. Mr. Peter Sweeney, 17 Harley Street, London, W1G 9QH (or by email – admin@londonfootandanklesurgery.co.uk)
+            <ul style={{textAlign: 'left'}}>
+                <li><a href="http://www.londonfootandanklesurgery.co.uk/privacy-policy/" target="_blank" rel="noopener noreferrer">London Foot & Ankle Surgery - Privacy Statement</a></li>
+                <li><a href="https://harleystreet-medicalcentre.com/privacy/" target="_blank" rel="noopener noreferrer">Harley Street Medical Centre - Privacy Statement</a></li>
+            </ul>
+            <br />
+            For more information on how we process your data contact our team who would be happy to provide further details. 
+            <br />
+            <br />
+            <ul style={{textAlign: 'left'}}>
+                <li>Tel: <a href="tel:+442078208007">+44 207 820 8007</a><br /></li>
+                <li>Email: <a href="mailto: admin@londonfootandanklesurgery.co.uk">admin@londonfootandanklesurgery.co.uk</a></li>
+            </ul>
         </div>
 
         <form className="reg-form pm-margin">
             <label>
-            By checking this box you agree that you have read our privacy policy and that the personal information you provide will be processed in accordance with this. <br />
+            By checking this box you agree that you have read the above linked privacy policies and that the personal information you provide will be processed in accordance with this. <br />
             <div id="privacy">
                 <input className="pm-checkbox" type="checkbox" checked={privacy} name="privacy" onChange={e => setPrivacy(privacy === "I AGREE" ? "" : "I AGREE")} />I AGREE
                 <div className="required-label">*required</div>
@@ -77,11 +102,39 @@ let Submit = (props) => {
                 <input className="pm-checkbox" type="checkbox" checked={marketing} name="marketing" onChange={e => setMarketing(marketing === "YES" ? "" : "YES")} />YES
             </div>
             </label>
+
+            <hr />
+            <div 
+                className='signature-container'
+                style={{textAlign: 'center'}}
+                >
+                <div className="required-label">*required</div>
+                <div style={{width: '100%', textAlign: 'left', margin: '20px 0'}}>
+                    PLEASE SIGN
+                    <p>You can use your mouse or your finger if you have a touch screen.</p>
+                </div>
+                <SignatureCanvas 
+                    penColor='#20365F'
+                    clearOnResize={false}
+                    canvasProps={{id: "signature", className: 'sigCanvas', style: {width: '98%', height: 140, border: '2px solid #20365F'}}}
+                    backgroundColor='rgba(255, 255, 255, 0.8)'
+                    ref={(ref) => sigPad.current = ref}
+                    />
+                <button 
+                    style={{marginBottom: 0, width: '100%'}}
+                    onClick={(e) => {
+                        e.preventDefault()
+                        sigPad.current.clear()
+                    }}>
+                        clear signature
+                    </button>
+            </div>
+            <hr />
         </form>
 
         <div className="nav-buttons">
             <button className="back-button" onClick={() => onClick("medical")}>back</button>
-            <button className="next-button" onClick={() => onClick("fieldSubmit")}>Submit</button>
+            <button className="next-button" onClick={() => onClick("fieldSubmit")}>submit</button>
         </div>
         </div>
 

@@ -70,6 +70,13 @@ button {
     background-color: #248ec2;
     font-size: 16px;
     color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background-color: white;
+    color: #20365F;
 }
 
 .required-label {

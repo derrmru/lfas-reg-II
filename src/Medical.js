@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import TextInput from './components/textInput/textInput';
 
 let Medical = (props) => {
     let theFields = props.fields;
@@ -73,91 +74,113 @@ let Medical = (props) => {
         <div style={{marginBottom: "30px"}}>If any fields are not relevant, please use 'N/A'</div>
         <hr />
         <form className="reg-form">
-            <label>
-            Please list all medical conditions you are being treated for: <div className="required-label">*required</div> <br />
-            <input type="text" name="conditions" value={conditions ? conditions : ""}  onChange={e => setConditions(e.target.value)} placeholder="e.g. gout" />
-            <br />
-            </label>
+            <TextInput 
+                label='Please list all medical conditions you are being treated for'
+                required={true}
+                update={e => setConditions(e)}
+                name="conditions"
+                value={conditions}
+                placeholder='e.g. gout'
+                />
+            <TextInput 
+                label='Please list all medicines you are currently taking'
+                required={true}
+                update={e => setMedicines(e)}
+                name="medicines"
+                value={medicines}
+                placeholder='e.g. painkillers'
+                />
+            <TextInput 
+                label='Please list any previous operations you have had'
+                required={true}
+                update={e => setOperations(e)}
+                name="operations"
+                value={operations}
+                placeholder='e.g. ACL Repair'
+                />
+            <TextInput 
+                label='Please list any allergies'
+                required={true}
+                update={e => setAllergies(e)}
+                name="allergies"
+                value={allergies}
+                placeholder='e.g. penicillin'
+                />
 
             <label>
-            Please list all medicines you are currently taking: <div className="required-label">*required</div> <br />
-            <input type="text" name="medicines" value={medicines ? medicines : ""}  onChange={e => setMedicines(e.target.value)} placeholder="e.g. painkillers" />
-            <br />
+                Do you smoke? <div className="required-label">*required</div> <br />
+                <div className="radio-container">
+                    <label>
+                    Yes:
+                    <input className="radios" type="radio" name='smoker' checked={smoker === "smoker"} value="smoker" onChange={e => setSmoker(e.target.value)} />
+                    </label>
+                    <label>
+                    No:
+                    <input className="radios" type="radio" name='smoker' checked={smoker === "non-smoker"} value="non-smoker" onChange={e => setSmoker(e.target.value)} />
+                    </label>
+                </div>
             </label>
 
-            <label>
-            Please list any previous operations you have had: <div className="required-label">*required</div> <br />
-            <input type="text" name="operations" value={operations ? operations : ""}  onChange={e => setOperations(e.target.value)} placeholder="e.g. ACL Repair" />
-            <br />
-            </label>
-
-            <label>
-            Please list any allergies: <div className="required-label">*required</div> <br />
-            <input type="text" name="allergies" value={allergies ? allergies : ""}  onChange={e => setAllergies(e.target.value)} placeholder="e.g. penicillin" />
-            <br />
-            </label>
-
-            <label>
-            Do you smoke? <div className="required-label">*required</div> <br />
-            <div className="radio-container">
-                <label>
-                Yes:
-                <input className="radios" type="radio" name='smoker' checked={smoker === "smoker"} value="smoker" onChange={e => setSmoker(e.target.value)} />
-                </label>
-                <label>
-                No:
-                <input className="radios" type="radio" name='smoker' checked={smoker === "non-smoker"} value="non-smoker" onChange={e => setSmoker(e.target.value)} />
-                </label>
-            </div>
-            </label>
-
-            {smoker === "smoker" ?
-                <label>
-                How many cigarettes per day: <br />
-                <input type="text" name="smokesPerDay" value={smokesPerDay ? smokesPerDay : ""}  onChange={e => setSmokesPerDay(e.target.value)} placeholder="e.g. 3" />
-                <br />
-                </label> 
-
+            {smoker === "smoker" ? //if client is smoker display how many smokes per day
+                <TextInput 
+                    label='How many cigarettes per day'
+                    required={true}
+                    update={e => setSmokesPerDay(e)}
+                    name="smokesPerDay"
+                    value={smokesPerDay}
+                    placeholder='e.g. 4'
+                    />
                 :
-
                 <></>
             }
 
-            <label>
-                How many units of alcohol do you consume per week?: <div className="required-label">*required</div> <br />
-                <input type="text" name="alcohol" value={alcohol ? alcohol : ""}  onChange={e => setAlcohol(e.target.value)} placeholder="e.g. 4" />
-                <br />
-            </label>
-
-            <label>
-                Occupation: <div className="required-label">*required</div> <br />
-                <input type="text" name="occupation" value={occupation ? occupation : ""}  onChange={e => setOccupation(e.target.value)} />
-                <br />
-            </label>
-
-            <label>
-                Weight: <div className="required-label">*required</div> <br />
-                <input type="text" name="weight" value={weight ? weight : ""}  onChange={e => setWeight(e.target.value)} placeholder="e.g. 80kg" />
-                <br />
-            </label>
-
-            <label>
-                Height: <div className="required-label">*required</div> <br />
-                <input type="text" name="height" value={height ? height: ""}  onChange={e => setHeight(e.target.value)} placeholder="e.g. 5ft 10in" />
-                <br />
-            </label>
-
-            <label>
-                Shoe Size: <div className="required-label">*required</div> <br />
-                <input type="text" name="shoeSize" value={shoeSize ? shoeSize : ""}  onChange={e => setShoeSize(e.target.value)} placeholder="e.g. 9 UK" />
-                <br />
-            </label>
-
-            <label>
-                Please list all sports and recreational activities: <div className="required-label">*required</div> <br />
-                <input type="text" name="sports" value={sports ? sports : ""}  onChange={e => setSports(e.target.value)} placeholder="e.g. badminton" />
-                <br />
-            </label>
+            <TextInput 
+                label='How many units of alcohol do you consume per week?'
+                required={true}
+                update={e => setAlcohol(e)}
+                name="alcohol"
+                value={alcohol}
+                placeholder='e.g. 4'
+                />
+            <TextInput 
+                label='Occupation'
+                required={true}
+                update={e => setOccupation(e)}
+                name="occupation"
+                value={occupation}
+                />
+            <TextInput 
+                label='Weight'
+                required={true}
+                update={e => setWeight(e)}
+                name="weight"
+                value={weight}
+                placeholder='e.g. 80kg'
+                />
+            <TextInput 
+                label='Height'
+                required={true}
+                update={e => setHeight(e)}
+                name="height"
+                value={height}
+                placeholder='e.g. 5ft 10in'
+                />
+            <TextInput 
+                label='Shoe Size'
+                required={true}
+                update={e => setShoeSize(e)}
+                name="shoeSize"
+                value={shoeSize}
+                placeholder='e.g. 9 UK'
+                />
+            <TextInput 
+                label='Please list all sports and recreational activities'
+                required={true}
+                update={e => setSports(e)}
+                name="sports"
+                value={sports}
+                placeholder='e.g. badminton'
+                />
         </form>
         <div className="nav-buttons">
             <button className="back-button" onClick={() => onClick("personal")}>back</button>

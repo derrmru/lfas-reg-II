@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react';
+import TextInput from './components/textInput/textInput';
 import './App.css';
 
 let Personal = (props) => {
+  //form fields held as state
   const [firstName, setFirstName] = useState(props.fields.firstName);
   const [lastName, setLastName] = useState(props.fields.lastName);
   const [dob, setDOB] = useState(props.fields.dob);
@@ -22,6 +24,7 @@ let Personal = (props) => {
   const [membership, setMembership] = useState(props.fields.membership);
 
   useEffect(() => {
+    //google address auto complete
     let autocomplete = null;
     const google = window.google;
     autocomplete = new google.maps.places.Autocomplete(document.getElementById('autocomplete'), {})
@@ -50,6 +53,7 @@ let Personal = (props) => {
 
     }
 
+    //google address autocomlete for GP address details
     let autoGP = null;
     autoGP = new google.maps.places.Autocomplete(document.getElementById('GP'), {})
 
@@ -80,6 +84,7 @@ let Personal = (props) => {
 
   })
 
+  //data validation function and render phase of application
   let onClick = () => {
     let thisForm = {
       firstName: firstName.trim(),
@@ -143,17 +148,22 @@ let Personal = (props) => {
       <div>If any fields are not relevant, please use 'N/A'</div>
       <hr />
       <form className="reg-form">
-        <label>
-          First Name: <div className="required-label">*required</div> <br />
-          <input type="text" name="firstName" value={firstName}  onChange={e => setFirstName(e.target.value)} placeholder="e.g. John" />
-          <br />
-        </label>
-
-        <label>
-                Last Name: <div className="required-label">*required</div> <br />
-                <input type="text" name="lastName" value={lastName}  onChange={e => setLastName(e.target.value)} placeholder="e.g. Smith" />
-          <br />
-              </label>
+        <TextInput 
+          label='First Name'
+          required={true}
+          update={e => setFirstName(e)}
+          name="firstName"
+          value={firstName}
+          placeholder='e.g. John'
+          />
+        <TextInput 
+          label='Last Name'
+          required={true}
+          update={e => setLastName(e)}
+          name="lastName"
+          value={lastName}
+          placeholder='e.g. Smith'
+          />
 
         <label>
           Date of Birth: <div className="required-label">*required</div> <br />
@@ -195,23 +205,28 @@ let Personal = (props) => {
         :
         <></>}
 
-        <label>
-          Contact Number: <div className="required-label">*required</div> <br />
-          <input type="text" name="tel" value={tel} onChange={e => setTel(e.target.value)} placeholder="e.g. +44 7512 345 678" />
-          <br />
-        </label>
+        <TextInput 
+          label='Contact Number'
+          required={true}
+          update={e => setTel(e)}
+          name="tel"
+          value={tel}
+          placeholder='e.g. +44 7512 345 678'
+          />
+        <TextInput 
+          label='Email Address'
+          required={true}
+          update={e => setEmail(e)}
+          name="email"
+          value={email}
+          placeholder='e.g. example@example.com'
+          />
 
         <label>
-          Email Address: <div className="required-label">*required</div> <br />
-          <input type="email" name="email" value={email}  onChange={e => setEmail(e.target.value)} placeholder="e.g. example@example.com" />
+          GP Address: <div style={{fontSize: "11px", float: "right", marginRight: "20px"}}>Enter 'N/A' if you do not have a GP</div> <br />
+          <input id="GP" type="text" name="GPName" value={GPName} onChange={e => setGPName(e.target.value)} />
           <br />
         </label>
-
-        <label>
-                GP Address: <div style={{fontSize: "11px", float: "right", marginRight: "20px"}}>Enter 'N/A' if you do not have a GP</div> <br />
-                <input id="GP" type="text" name="GPName" value={GPName} onChange={e => setGPName(e.target.value)} />
-                <br />
-              </label>
 
               {GPName !== "" && GPStreet !== "" && GPPost !== "" ?
               <>
@@ -266,24 +281,27 @@ let Personal = (props) => {
         {insurer !== "" && insurer !== 'Self-funding' ?
           <>
           <hr />
-          <label>
-            Membership / Policy Number: <br />
-            <input type="text" value={membership} onChange={e => setMembership(e.target.value)} required />
-            <br />
-          </label>
-
-          <label>
-                  Authorisation Number: <br />
-                  <input type="text" value={auth} onChange={e => setAuth(e.target.value)} />
-                  <br />
-                </label>
+          <TextInput 
+            label='Membership / Policy Number'
+            required={false}
+            update={e => setMembership(e)}
+            name="membership"
+            value={membership}
+            />
+          <TextInput 
+            label='Authorisation Number'
+            required={false}
+            update={e => setAuth(e)}
+            name="auth"
+            value={auth}
+            />
           <hr />
           </>
           :
           <></>
         }
       </form>
-  <button onClick={onClick}>next</button>
+      <button onClick={onClick}>next</button>
 
       </div>
     </div>

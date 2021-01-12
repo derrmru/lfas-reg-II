@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import Loading from './Loading';
 import SignatureCanvas from 'react-signature-canvas';
+import HSMC from './downloads/Harley Street Medical Centre Privacy Policy.pdf';
 import $ from "jquery";
 
 let Submit = (props) => {
@@ -75,7 +76,7 @@ let Submit = (props) => {
             <br />
             <ul style={{textAlign: 'left'}}>
                 <li><a href="http://www.londonfootandanklesurgery.co.uk/privacy-policy/" target="_blank" rel="noopener noreferrer">London Foot & Ankle Surgery - Privacy Statement</a></li>
-                <li><a href="https://harleystreet-medicalcentre.com/privacy/" target="_blank" rel="noopener noreferrer">Harley Street Medical Centre - Privacy Statement</a></li>
+                <li><a href={HSMC} target="_blank" rel="noopener noreferrer">Harley Street Medical Centre - Privacy Statement</a></li>
             </ul>
             <br />
             For more information on how we process your data contact our team who would be happy to provide further details. 
@@ -89,7 +90,7 @@ let Submit = (props) => {
 
         <form className="reg-form pm-margin">
             <label>
-            By checking this box you agree that you have read the above linked privacy policies and that the personal information you provide will be processed in accordance with this. <br />
+            By checking this box you confirm that you have read and agree with the London Foot & Ankle Surgery and Harley Street Medical Centre’s Privacy Statements and that the personal information you provide will be processed in accordance with these. <br />
             <div id="privacy">
                 <input className="pm-checkbox" type="checkbox" checked={privacy} name="privacy" onChange={e => setPrivacy(privacy === "I AGREE" ? "" : "I AGREE")} />I AGREE
                 <div className="required-label">*required</div>

@@ -40,7 +40,7 @@ form {
 }
 
 form input {
-    width: 93%;
+    width: calc(94% - 10px);
     margin: auto;
     margin-top: 5px;
     margin-bottom: 20px;
@@ -53,10 +53,11 @@ form select {
    -webkit-appearance: none;
    -moz-appearance: none;
    appearance: none;
-   width: 100%;
+   width: calc(100% - 10px);
    margin: auto;
    margin-top: 5px;
-   padding: 10px;
+   margin-bottom: 20px;
+   padding: 10px 0 10px 10px;
    border-radius: 5px;
 }
 

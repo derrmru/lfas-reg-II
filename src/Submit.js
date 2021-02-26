@@ -49,9 +49,14 @@ let Submit = (props) => {
 
         //data validation prior to submit
         ff.dob = ff.dob.split('-').reverse().join('.')
-        ff.firstName = ff.firstName[0].toUpperCase() + ff.firstName.slice(1).toLowerCase()
-        ff.lastName = ff.lastName[0].toUpperCase() + ff.lastName.slice(1).toLowerCase()
-        console.log(ff)
+        ff.firstName = ff.firstName.split(' ').reduce((total, cur) => {
+            total.push(cur[0].toUpperCase() + cur.slice(1).toLowerCase());
+            return total;
+        }, []).join(' ')
+        ff.lastName = ff.lastName.split(' ').reduce((total, cur) => {
+            total.push(cur[0].toUpperCase() + cur.slice(1).toLowerCase());
+            return total;
+        }, []).join(' ')
 
         //attach signature image to payload
         ff.signature = sigPad.current.getSignaturePad().toDataURL('image/png')
@@ -60,8 +65,6 @@ let Submit = (props) => {
         $.post( process.env.REACT_APP_POST,
             ff,
             function(res, status)   {
-                console.log(res);
-                console.log(status);
                     if (status === 'success'){
                         props.reRender("completed")
                     }

@@ -48,7 +48,7 @@ let Submit = (props) => {
         setLoading(true);
 
         //data validation prior to submit
-        ff.dob = ff.dob.split('-').reverse().join('.')
+        ff.dob = ff.dob.split('-').reverse().join('.').split('/').join('.');
         ff.firstName = ff.firstName.split(' ').reduce((total, cur) => {
             total.push(cur[0].toUpperCase() + cur.slice(1).toLowerCase());
             return total;
